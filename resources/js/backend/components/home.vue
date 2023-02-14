@@ -1,6 +1,6 @@
 <template>
     <div>
-        <vue-editor v-model="content" />
+        <!-- <vue-editor v-model="content" /> -->
         <!-- {{ isReadPermitted }} -->
 
 

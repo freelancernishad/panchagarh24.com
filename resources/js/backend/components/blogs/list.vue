@@ -1,6 +1,6 @@
 <template>
     <div>
-
+        <loader v-if="preLooding"  object="#ff0000" color1="#ffffff" color2="#17fd3d" size="8" speed="2" bg="#343a40" objectbg="#999793" opacity="80" disableScrolling="false" name="dots"></loader>
 
 <div class="breadcrumbs-area">
     <h3>পোস্ট</h3>
@@ -41,7 +41,13 @@
             <td>{{ item.title }}</td>
             <td>{{ item.slug }}</td>
             <td>{{ item.short_description }}</td>
-            <td><router-link :to="{name:'blogedit',params:{id:item.id}}" class="btn btn-info">Edit</router-link></td>
+
+            <td>
+
+                <router-link :to="{name:'blogedit',params:{id:item.id}}" class="btn btn-info mt-3">Edit</router-link>
+                <span @click="postDelete(item.id)" class="btn btn-danger mt-3">Delete</span>
+
+            </td>
         </tr>
     </tbody>
 
@@ -137,7 +143,40 @@ export default {
                 this.preLooding = false
         },
 
+        async postDelete(id){
+
+            Swal.fire({
+                        title: 'আপনি কি নিশ্চিত?',
+                        text: `পোস্ট টি ডিলিট করতে চান!`,
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: `হা নিশ্চিত`,
+                        cancelButtonText: `বাতিল`
+                    }).then(async (result) => {
+                        if (result.isConfirmed) {
+                            var res = await this.callApi('get', `/api/get/blog/delete/${id}`, []);
+                            Notification.customSuccess(`পোস্ট টি ডিলিট হয়েছে!`);
+                            this.preLooding = false
+                            this.blogsList()
+                        } else {
+                            this.preLooding = false
+                        }
+                    })
+
+
+        },
+
+
+
+
     },
+
+
+
+
+
     mounted() {
 
         this.blogsList();

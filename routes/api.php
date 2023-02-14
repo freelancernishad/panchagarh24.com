@@ -61,6 +61,14 @@ Route::get('get/date/time',[BlogController::class,'dateTime']);
 
 
 Route::get('get/all/latest/news',[BlogController::class,'latestNews']);
+
+
+Route::get('post/update/latest/news',[BlogController::class,'latestNewsupdate']);
+
+
+
+
+
 Route::get('get/all/category',[CategoryController::class,'index']);
 Route::get('get/category/list',[CategoryController::class,'getCategory']);
 Route::get('update/category/{id}',[CategoryController::class,'getSinglecategory']);
@@ -74,3 +82,5 @@ Route::post('set/featured/post',[BlogController::class,'setFiPost']);
 Route::get('get/blog/delete/{id}',[BlogController::class,'deleteblog']);
 Route::get('update/blog/{id}',[BlogController::class,'getblogEdit']);
 Route::post('update/blog',[BlogController::class,'updateblog']);
+
+// Route::get('post/delete/{id}',[BlogController::class,'deleteblog']);
