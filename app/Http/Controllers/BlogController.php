@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Remls\HijriDate\HijriDate;
 use Carbon\Carbon;
@@ -43,6 +44,34 @@ class BlogController extends Controller
     }
 
 
+    public function postByCategoryPaginate($catName,$Paginate=6)
+    {
+
+        // return $catName;
+        $categoriesCount = Category::where('name',$catName)->count();
+        if($categoriesCount>0){
+
+
+        $categoriesget = Category::where('name',$catName)->first();
+        $postCount =  Post::where(['cat_id'=>$categoriesget->id])->select('blog_id')->count();
+        if($postCount>0){
+            $posts =  Post::where(['cat_id'=>$categoriesget->id])->select('blog_id')->get();
+            $latestPost = Blog::orderBy('id','desc');
+            foreach ($posts as  $posid) {
+                $latestPost->orWhere(['id'=>$posid->blog_id]);
+            }
+            return $latestPost->paginate($Paginate);
+        }else{
+            return [];
+        }
+    }else{
+            return [];
+        }
+
+
+
+    }
+
     public function getblog(Request $request)
     {
         $featured_post = $request->featured_post;
@@ -58,6 +87,7 @@ class BlogController extends Controller
             $category = $request->category;
             $cat_id = Category::where('slug',$category)->first()->id;
              $subcatCount = Category::where('cat_id',$cat_id)->count();
+
              if($subcatCount>0){
                 $subcat = Category::where('cat_id',$cat_id)->get();
                 $blogs = Blog::orderBy('id','desc')->where(['cat_id'=>$cat_id]);
@@ -67,7 +97,7 @@ class BlogController extends Controller
                 }
                 return $blogs->paginate($page);
              }
-
+             return $this->postByCategoryPaginate($category,$page);
 
             return Blog::where('cat_id',$cat_id)->orderBy('id','desc')->paginate($page);
         }
@@ -96,8 +126,50 @@ class BlogController extends Controller
     }
 
 
+    public function latestNewsupdate()
+    {
+        $blogs = Blog::all();
+        foreach ($blogs as $value) {
+            $blog_id = $value->id;
+            $cat_id = $value->cat_id;
+            Post::create(['blog_id'=>$blog_id,'cat_id'=>$cat_id]);
+
+        }
+    }
+
+
+
+
+
+    public function postByCategory($catName,$itemscount=6)
+    {
+
+        $categoriesget = Category::where('name',$catName)->first();
+
+        $postCount =  Post::where(['cat_id'=>$categoriesget->id])->select('blog_id')->count();
+
+        if($postCount>0){
+            $posts =  Post::where(['cat_id'=>$categoriesget->id])->select('blog_id')->get();
+            $latestPost = Blog::orderBy('id','desc');
+            foreach ($posts as  $posid) {
+                $latestPost->orWhere(['id'=>$posid->blog_id]);
+            }
+            return $latestPost->latest()->limit($itemscount)->get();
+        }else{
+            return [];
+        }
+
+    }
+
+
     public function latestNews()
     {
+
+
+
+// return $this->postByCategory('জাতীয়');
+
+
 
 
         $categoriesCount = Category::where('name','ভিডিও গ্যালারি')->count();
@@ -125,32 +197,36 @@ class BlogController extends Controller
             // print_r(BanglaToEnglish($value->name)); echo "<br>";
             if($catCount>0){
                  $subcatCount = Category::where(['cat_id'=>$value->id,'type'=>'sub'])->count();
-                if($subcatCount>0){
-                    $subcat = Category::where(['cat_id'=>$value->id,'type'=>'sub'])->get();
-                   $blogs = Blog::orderBy('id','desc')->where(['cat_id'=>$value->id]);
-                   foreach ($subcat as $value2) {
-                       $blogs->orwhere('cat_id',$value2->id);
-                    }
+
+                // if($subcatCount>0){
+                //     $subcat = Category::where(['cat_id'=>$value->id,'type'=>'sub'])->get();
+                //    $blogs = Blog::orderBy('id','desc')->where(['cat_id'=>$value->id]);
+                //    foreach ($subcat as $value2) {
+                //        $blogs->orwhere('cat_id',$value2->id);
+                //     }
 
 
-                    if($value->name=='জাতীয়'){
-                        $data[BanglaToEnglish($value->name)]  = $blogs->latest()->limit(8)->get();
-                    }else{
-                        $data[BanglaToEnglish($value->name)]  = $blogs->latest()->limit(6)->get();
-                    }
+                //     if($value->name=='জাতীয়'){
+                //         $data[BanglaToEnglish($value->name)]  = $this->postByCategory($value->name,8);
+                //         // $blogs->latest()->limit(8)->get();
+                //     }else{
+                //         $data[BanglaToEnglish($value->name)]  = $this->postByCategory($value->name,6);
+                //         // $blogs->latest()->limit(6)->get();
+                //     }
 
-
-                }else{
+                // }else{
 
 
                     if($value->name=='জাতীয়'){
                         // return  $value->name;
-                        $data[BanglaToEnglish($value->name)] = Blog::where(['cat_id'=>$value->id])->orderBy('id','desc')->latest()->limit(8)->get();
+                        $data[BanglaToEnglish($value->name)] = $this->postByCategory($value->name,8);
+                        // Blog::where(['cat_id'=>$value->id])->orderBy('id','desc')->latest()->limit(8)->get();
                     }else{
-                        $data[BanglaToEnglish($value->name)] = Blog::where(['cat_id'=>$value->id])->orderBy('id','desc')->latest()->limit(6)->get();
+                        $data[BanglaToEnglish($value->name)] = $this->postByCategory($value->name,6);
+                        // Blog::where(['cat_id'=>$value->id])->orderBy('id','desc')->latest()->limit(6)->get();
                     }
                     // $data[BanglaToEnglish($value->name)] = Blog::where(['cat_id'=>$value->id])->orderBy('id','desc')->latest()->limit(6)->get();
-                }
+                // }
             }else{
                 $data[BanglaToEnglish($value->name)] = [];
 
@@ -170,7 +246,7 @@ class BlogController extends Controller
     {
 
         $id = $request->id;
-        $data = $request->except(['Images']);
+        $data = $request->except(['Images','cat_ids']);
 
         $ImagesCount =  count(explode(';',$request->Images));
 
@@ -179,11 +255,24 @@ class BlogController extends Controller
                 $data['fiture'] =  fileupload($request->Images,"blogs/",300,165);
             }
 
-        if($id){
-            $blog = Blog::find($id);
-            return $blog->update($data);
+        // if($id){
+        //     $blog = Blog::find($id);
+        //     return $blog->update($data);
+        // }
+
+
+        $blog =  Blog::create($data);
+
+        Post::create(['blog_id'=>$blog->id,'cat_id'=>$$request->cat_id]);
+
+        if($request->cat_ids){
+            foreach ($request->cat_ids as $cats) {
+                // return $cats['catid'];
+                Post::create(['blog_id'=>$blog->id,'cat_id'=>$cats['catid']]);
+            }
+
         }
-        return Blog::create($data);
+
 
 
     }
@@ -201,7 +290,14 @@ class BlogController extends Controller
         {
             $blogs =  Blog::find($id);
             $cat_id = $blogs->cat_id;
+
+
+
             $relatedPosts = Blog::where(['cat_id'=>$cat_id])->orderBy('updated_at','desc')->latest()->limit(5)->get();
+
+
+
+
             $latestPost = Blog::orderBy('updated_at','desc')->latest()->limit(5)->get();
             $latestPost2 = Blog::orderBy('updated_at','desc')->latest()->limit(3)->get();
             $categories =  Category::find($blogs->cat_id);
@@ -219,6 +315,11 @@ class BlogController extends Controller
         }
         public function deleteblog(Request $request,$id)
         {
+            $posts =  Post::where(['blog_id'=>$id])->get();
+            foreach ($posts as $value) {
+                $singlePost = Post::find($value->id);
+                $singlePost->delete();
+            }
            $blog =  Blog::find($id);
            return $blog->delete();
         }
