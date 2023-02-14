@@ -175,14 +175,16 @@
 
                 <div class="container pt-3 ">
                     <div class="row">
-                        <div class="col-lg-9 col-md-8" style="    background: #87c90730;">
-                            <div class="category-header country-ch d-flex justify-content-between align-items-center opinion__home mt-2" style="background: #87c907;">
+
+                        <div class="col-lg-9 col-md-8" style="background: #aeb5cb63 !important;">
+                            <div
+                                class="category-header country-ch d-flex justify-content-between align-items-center opinion__home mt-2" style="background: #74d2e7 !important;">
                                 <div class="heading opinion-heading">
                                     <p class="title"><router-link title=""
-                                            :to="{ name: 'categoryPost', params: { cat: 'সারাদেশ' } }"
-                                            class="country-lc">সারাদেশ</router-link></p>
+                                            :to="{ name: 'categoryPost', params: { cat: 'পঞ্চগড়ের খবর' } }"
+                                            class="country-lc">পঞ্চগড়ের খবর</router-link></p>
                                 </div>
-                                <router-link title="" :to="{ name: 'categoryPost', params: { cat: 'সারাদেশ' } }"
+                                <router-link title="" :to="{ name: 'categoryPost', params: { cat: 'পঞ্চগড়ের খবর' } }"
                                     class="d-none d-sm-flex">
                                     <div class="read-more d-flex justify-content-end align-items-center">
                                         <p>আরও খবর</p>
@@ -191,24 +193,25 @@
                                 </router-link>
                             </div>
                             <div class="row border-right country-articles">
-                                <div class="col-12 col-md-6 col-xl-4" v-for="(the_whole_country, naindex) in posts.the_whole_country"
+                                <div class="col-12 col-md-6 col-xl-4"
+                                    v-for="(Panchagarh_news, naindex) in posts.Panchagarh_news"
                                     :key="'naindex' + naindex">
                                     <div class="clk-list clk-center">
-                                        <a :href="'/read/post/'+the_whole_country.id+'/'+the_whole_country.title" class="clk-item clk-item-regular py-2 ">
-                                            <img style="height:75px !important;" :src="$asseturl + the_whole_country.fiture"
-                                                v-if="the_whole_country.fiture" :alt="the_whole_country.title"
+                                        <a :href="'/read/post/'+Panchagarh_news.id+'/'+Panchagarh_news.title" class="clk-item clk-item-regular py-2 ">
+                                            <img style="height:75px !important;"
+                                                :src="$asseturl + Panchagarh_news.fiture"
+                                                v-if="Panchagarh_news.fiture" :alt="Panchagarh_news.title"
                                                 class="lazyload img-loader">
                                             <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"
-                                                :alt="the_whole_country.title" class="lazyload img-loader">
+                                                :alt="Panchagarh_news.title" class="lazyload img-loader">
                                             <h2 class="title">
-                                                {{ the_whole_country.title }}
+                                                {{ Panchagarh_news.title }}
                                             </h2>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
 
                         <div class="col-lg-3 col-md-4 politics" style="background: #ff99001f;">
                             <div
@@ -252,15 +255,16 @@
 
                 <div class="container pt-3 m-pt-2">
                     <div class="row">
-                        <div class="col-lg-9 col-md-8" style="background: #aeb5cb63 !important;">
-                            <div
-                                class="category-header country-ch d-flex justify-content-between align-items-center opinion__home mt-2" style="background: #74d2e7 !important;">
+
+
+                        <div class="col-lg-9 col-md-8" style="    background: #87c90730;">
+                            <div class="category-header country-ch d-flex justify-content-between align-items-center opinion__home mt-2" style="background: #87c907;">
                                 <div class="heading opinion-heading">
                                     <p class="title"><router-link title=""
-                                            :to="{ name: 'categoryPost', params: { cat: 'পঞ্চগড়ের খবর' } }"
-                                            class="country-lc">পঞ্চগড়ের খবর</router-link></p>
+                                            :to="{ name: 'categoryPost', params: { cat: 'সারাদেশ' } }"
+                                            class="country-lc">সারাদেশ</router-link></p>
                                 </div>
-                                <router-link title="" :to="{ name: 'categoryPost', params: { cat: 'পঞ্চগড়ের খবর' } }"
+                                <router-link title="" :to="{ name: 'categoryPost', params: { cat: 'সারাদেশ' } }"
                                     class="d-none d-sm-flex">
                                     <div class="read-more d-flex justify-content-end align-items-center">
                                         <p>আরও খবর</p>
@@ -269,25 +273,26 @@
                                 </router-link>
                             </div>
                             <div class="row border-right country-articles">
-                                <div class="col-12 col-md-6 col-xl-4"
-                                    v-for="(Panchagarh_news, naindex) in posts.Panchagarh_news"
+                                <div class="col-12 col-md-6 col-xl-4" v-for="(the_whole_country, naindex) in posts.the_whole_country"
                                     :key="'naindex' + naindex">
                                     <div class="clk-list clk-center">
-                                        <a :href="'/read/post/'+Panchagarh_news.id+'/'+Panchagarh_news.title" class="clk-item clk-item-regular py-2 ">
-                                            <img style="height:75px !important;"
-                                                :src="$asseturl + Panchagarh_news.fiture"
-                                                v-if="Panchagarh_news.fiture" :alt="Panchagarh_news.title"
+                                        <a :href="'/read/post/'+the_whole_country.id+'/'+the_whole_country.title" class="clk-item clk-item-regular py-2 ">
+                                            <img style="height:75px !important;" :src="$asseturl + the_whole_country.fiture"
+                                                v-if="the_whole_country.fiture" :alt="the_whole_country.title"
                                                 class="lazyload img-loader">
                                             <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"
-                                                :alt="Panchagarh_news.title" class="lazyload img-loader">
+                                                :alt="the_whole_country.title" class="lazyload img-loader">
                                             <h2 class="title">
-                                                {{ Panchagarh_news.title }}
+                                                {{ the_whole_country.title }}
                                             </h2>
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+
+
 
                         <div class="col-lg-3 col-md-4 politics" style="">
                             <div

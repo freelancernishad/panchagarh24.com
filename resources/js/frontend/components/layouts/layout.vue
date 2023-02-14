@@ -93,18 +93,23 @@
                 style="padding-top: 5px !important;">
                 <div class="d-flex justify-content-between align-items-center w-100">
                     <router-link class="brand-logo-top" title="" to="/" style="border: 2px solid #006328;padding: 7px;">
-                        <img style="max-width: 300px;" :src="$asseturl + 'cropped-cropped-Alokitotetulia.png.png'"
+                        <img style="max-width: 300px;" :src="$asseturl + 'logo.jpeg'"
                             alt="" />
                     </router-link>
 
 
                     <div class="d-flex align-items-center social-media-icons">
-                <p class="d-flex align-items-center" style="    margin-left: 70px;margin-top: 7px;">
+                        <p class="d-flex align-items-center" style="    margin-left: 70px;margin-top: 7px;">
+                            <img :src="$asseturl+'softwebad.jpeg'" width="100%" />
+                        </p>
+                    </div>
 
-                     <img :src="$asseturl+'softwebad.jpeg'" width="100%" />
+                    <div class="d-flex align-items-center social-media-icons">
+                        <p class="d-flex align-items-center" style="    margin-left: 70px;margin-top: 7px;">
+                            <img :src="$asseturl+'logo2.jpeg'" width="143px" />
+                        </p>
+                    </div>
 
-               </p>
-               </div>
                 </div>
             </div>
 
@@ -361,7 +366,7 @@
         </div>
     </div> -->
 
-    <img width="100%" :src="$asseturl+'footerimage.jpeg'" alt="">
+    <img width="100%" :src="$asseturl+'footerimage.jpeg?ver=1.0'" alt="">
     <div class="jFooterBottom" style="padding: 10px 12px;    background: #606060 !important;">
         <div class="container" style="padding: 9px 0 0px 0px;">
             <div class="row d-flex align-items-center">
