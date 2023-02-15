@@ -263,7 +263,7 @@ class BlogController extends Controller
 
         $blog =  Blog::create($data);
 
-        Post::create(['blog_id'=>$blog->id,'cat_id'=>$$request->cat_id]);
+        Post::create(['blog_id'=>$blog->id,'cat_id'=>$request->cat_id]);
 
         if($request->cat_ids){
             foreach ($request->cat_ids as $cats) {
