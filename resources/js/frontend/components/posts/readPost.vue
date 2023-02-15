@@ -62,7 +62,7 @@
 
                                     <div class="news-image" v-else>
                                         <img  :src="$asseturl+row.fiture" v-if="row.fiture"  :alt="row.title" class="lazyload img-loader">
-                                       <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="row.title" class="lazyload img-loader">
+                                       <img v-else :src="$asseturl+'defaltimage.png'"  :alt="row.title" class="lazyload img-loader">
                                         <p class="news-image-caption"></p>
                                     </div>
 
@@ -105,7 +105,7 @@
                                                     <a :href="'/read/post/'+latestPost.id+'/'+latestPost.title"
                                                         class="news-item news-item-box">
                                                         <img style=" width:100% !important;height:165px !important;" :src="$asseturl+latestPost.fiture" v-if="latestPost.fiture"  :alt="latestPost.title" class="lazyload img-loader">
-                                                        <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="latestPost.title" class="lazyload img-loader">
+                                                        <img v-else :src="$asseturl+'defaltimage.png'"  :alt="latestPost.title" class="lazyload img-loader">
                                                         <h2 class="title"> {{ latestPost.title }}</h2>
                                                 </a>
                                                 </div>
@@ -138,7 +138,7 @@
                                                 <a v-for="(relatedPost,index) in posts.relatedPosts" :key="index"  :href="'/read/post/'+relatedPost.id+'/'+relatedPost.title"  class="news-item news-item-regular py-2" >
                                                     <div class="image-container">
                                                         <img style=" width:100% !important;height:75px !important;" :src="$asseturl+relatedPost.fiture" v-if="relatedPost.fiture"  :alt="relatedPost.title" class="lazyload img-loader">
-                                                        <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="relatedPost.title" class="lazyload img-loader">
+                                                        <img v-else :src="$asseturl+'defaltimage.png'"  :alt="relatedPost.title" class="lazyload img-loader">
                                                     </div>
                                                     <h2 class="title">
                                                         {{ relatedPost.title }}
@@ -162,7 +162,7 @@
                                                 <a v-for="(latestPost,index) in posts.latestPost" :key="index"  :href="'/read/post/'+latestPost.id+'/'+latestPost.title"  class="news-item news-item-regular py-2" >
                                                     <div class="image-container">
                                                         <img style=" width:100% !important;height:75px !important;" :src="$asseturl+latestPost.fiture" v-if="latestPost.fiture"  :alt="latestPost.title" class="lazyload img-loader">
-                                                        <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="latestPost.title" class="lazyload img-loader">
+                                                        <img v-else :src="$asseturl+'defaltimage.png'"  :alt="latestPost.title" class="lazyload img-loader">
                                                     </div>
                                                     <h2 class="title">
                                                         {{ latestPost.title }}

@@ -24,7 +24,7 @@
                                                 :src="$asseturl + LPost.fiture" v-if="LPost.fiture" :alt="LPost.title"
                                                 class="lazyload img-loader">
                                             <img style="width: 83px;height: 70px;margin-right: 8px;padding-left: 7px;"
-                                                v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"
+                                                v-else :src="$asseturl+'defaltimage.png'"
                                                 :alt="LPost.title" class="lazyload img-loader">
                                             <div class="d-flex flex-column" style="">
                                                 {{ LPost.title }}
@@ -47,7 +47,7 @@
                                         <div class="carousel-caption"> {{ featured_post.title }}</div>
                                         <img class="img-responsive cover_image" :src="$asseturl + featured_post.fiture"
                                             v-if="featured_post.fiture" width="600" height="364" alt="">
-                                        <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg":alt="featured_post.title" class="img-responsive cover_image">
+                                        <img v-else :src="$asseturl+'defaltimage.png'" :alt="featured_post.title" class="img-responsive cover_image">
                                         <div class="overlay"></div>
                                         <div class="overlay-info">
                                             <div class="info">
@@ -67,7 +67,7 @@
                             <div class="dots" style="display: flex;width: 98%;;overflow: auto;">
                                 <div class="navDotsImage" @click="slidernavChange(getlatestpost.length,index)" v-for="(featured_post, index) in getlatestpost"  :key="'slide'+index">
                                     <img style="height:100px;width:100px" :src="$asseturl + featured_post.fiture" v-if="featured_post.fiture"/>
-                                    <img style="height:100px;width:100px" v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg":alt="featured_post.title" class="img-responsive cover_image"/>
+                                    <img style="height:100px;width:100px" v-else :src=""$asseturl+'defaltimage.png':alt="featured_post.title" class="img-responsive cover_image"/>
                                 </div>
                             </div>
 
@@ -79,7 +79,7 @@
                                         <div class="image-container">
                                             <img :src="$asseturl + featured_post.fiture" v-if="featured_post.fiture"
                                                 :alt="featured_post.title" class="lazyload img-loader">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"
+                                            <img v-else :src="$asseturl+'defaltimage.png'"
                                                 :alt="featured_post.title" class="lazyload img-loader">
                                         </div>
                                         <h2 class="title" style="margin: 10px 0">
@@ -102,7 +102,7 @@
                                     <div class="image-container">
                                         <img :src="$asseturl + featured_post.fiture" v-if="featured_post.fiture"
                                             :alt="featured_post.title" class="lazyload img-loader">
-                                        <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"
+                                        <img v-else :src="$asseturl+'defaltimage.png'"
                                             :alt="featured_post.title" class="lazyload img-loader">
                                     </div>
                                     <div class="">
@@ -157,7 +157,7 @@
                                             <div class="image-container">
                                                 <img style="height:167px !important;" :src="$asseturl + National.fiture"
                                                     v-if="National.fiture" :alt="National.title" class="lazyload img-loader">
-                                                <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"
+                                                <img v-else :src="$asseturl+'defaltimage.png'"
                                                     :alt="National.title" class="lazyload img-loader">
                                             </div>
                                             <div>
@@ -202,7 +202,7 @@
                                                 :src="$asseturl + Panchagarh_news.fiture"
                                                 v-if="Panchagarh_news.fiture" :alt="Panchagarh_news.title"
                                                 class="lazyload img-loader">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"
+                                            <img v-else :src="$asseturl+'defaltimage.png'"
                                                 :alt="Panchagarh_news.title" class="lazyload img-loader">
                                             <h2 class="title">
                                                 {{ Panchagarh_news.title }}
@@ -236,7 +236,7 @@
                                         <img style="height:75px !important;" :src="$asseturl + international.fiture"
                                             v-if="international.fiture" :alt="international.title"
                                             class="lazyload img-loader">
-                                        <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"
+                                        <img v-else :src="$asseturl+'defaltimage.png'"
                                             :alt="international.title" class="lazyload img-loader">
                                     </div>
                                     <h2 class="title">
@@ -280,7 +280,7 @@
                                             <img style="height:75px !important;" :src="$asseturl + the_whole_country.fiture"
                                                 v-if="the_whole_country.fiture" :alt="the_whole_country.title"
                                                 class="lazyload img-loader">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"
+                                            <img v-else :src="$asseturl+'defaltimage.png'"
                                                 :alt="the_whole_country.title" class="lazyload img-loader">
                                             <h2 class="title">
                                                 {{ the_whole_country.title }}
@@ -317,7 +317,7 @@
                                     <div class="image-container">
                                         <img style="height:75px !important;" :src="$asseturl + politics.fiture"
                                             v-if="politics.fiture" :alt="politics.title" class="lazyload img-loader">
-                                        <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"
+                                        <img v-else :src="$asseturl+'defaltimage.png'"
                                             :alt="politics.title" class="lazyload img-loader">
                                     </div>
                                     <h2 class="title">
@@ -359,7 +359,7 @@
                                             <img style="height:75px !important;"
                                                 :src="$asseturl + entertainment.fiture" v-if="entertainment.fiture"
                                                 :alt="entertainment.title" class="lazyload img-loader">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"
+                                            <img v-else :src="$asseturl+'defaltimage.png'"
                                                 :alt="entertainment.title" class="lazyload img-loader">
                                             <h2 class="title">
                                                 {{ entertainment.title }}
@@ -392,7 +392,7 @@
                                     <div class="image-container">
                                         <img style="height:75px !important;" :src="$asseturl + education.fiture"
                                             v-if="education.fiture" :alt="education.title" class="lazyload img-loader">
-                                        <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"
+                                        <img v-else :src="$asseturl+'defaltimage.png'"
                                             :alt="education.title" class="lazyload img-loader">
                                     </div>
                                     <h2 class="title">
@@ -416,7 +416,7 @@
                                         <a :href="'/read/post/'+Life_style.id+'/'+Life_style.title" >
 
                                             <img :src="$asseturl + Life_style.fiture" v-if="Life_style.fiture" :alt="Life_style.title" width="233" height="148">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="Life_style.title"  width="233" height="148">
+                                            <img v-else :src="$asseturl+'defaltimage.png'"  :alt="Life_style.title"  width="233" height="148">
                                             <h3> {{ Life_style.title }}</h3>
                                         </a>
                                     </div>
@@ -437,7 +437,7 @@
                                         <a :href="'/read/post/'+Information_technology.id+'/'+Information_technology.title" >
 
                                             <img :src="$asseturl + Information_technology.fiture" v-if="Information_technology.fiture" :alt="Information_technology.title" width="233" height="148">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="Information_technology.title"  width="233" height="148">
+                                            <img v-else :src="$asseturl+'defaltimage.png'"  :alt="Information_technology.title"  width="233" height="148">
                                             <h3> {{ Information_technology.title }}</h3>
                                         </a>
                                     </div>
@@ -458,7 +458,7 @@
                                         <a :href="'/read/post/'+Special_report.id+'/'+Special_report.title" >
 
                                             <img :src="$asseturl + Special_report.fiture" v-if="Special_report.fiture" :alt="Special_report.title" width="233" height="148">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="Special_report.title"  width="233" height="148">
+                                            <img v-else :src="$asseturl+'defaltimage.png'"  :alt="Special_report.title"  width="233" height="148">
                                             <h3> {{ Special_report.title }}</h3>
                                         </a>
                                     </div>
@@ -479,7 +479,7 @@
                                         <a :href="'/read/post/'+sports.id+'/'+sports.title" >
 
                                             <img :src="$asseturl + sports.fiture" v-if="sports.fiture" :alt="sports.title" width="233" height="148">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="sports.title"  width="233" height="148">
+                                            <img v-else :src="$asseturl+'defaltimage.png'"  :alt="sports.title"  width="233" height="148">
                                             <h3> {{ sports.title }}</h3>
                                         </a>
                                     </div>
@@ -506,7 +506,7 @@
                                         <a :href="'/read/post/'+health.id+'/'+health.title" >
 
                                             <img :src="$asseturl + health.fiture" v-if="health.fiture" :alt="health.title" width="233" height="148">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="health.title"  width="233" height="148">
+                                            <img v-else :src="$asseturl+'defaltimage.png'"  :alt="health.title"  width="233" height="148">
                                             <h3> {{ health.title }}</h3>
                                         </a>
                                     </div>
@@ -527,7 +527,7 @@
                                         <a :href="'/read/post/'+Religion_and_life.id+'/'+Religion_and_life.title" >
 
                                             <img :src="$asseturl + Religion_and_life.fiture" v-if="Religion_and_life.fiture" :alt="Religion_and_life.title" width="233" height="148">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="Religion_and_life.title"  width="233" height="148">
+                                            <img v-else :src="$asseturl+'defaltimage.png'"  :alt="Religion_and_life.title"  width="233" height="148">
                                             <h3> {{ Religion_and_life.title }}</h3>
                                         </a>
                                     </div>
@@ -548,7 +548,7 @@
                                         <a :href="'/read/post/'+agriculture.id+'/'+agriculture.title" >
 
                                             <img :src="$asseturl + agriculture.fiture" v-if="agriculture.fiture" :alt="agriculture.title" width="233" height="148">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="agriculture.title"  width="233" height="148">
+                                            <img v-else :src="$asseturl+'defaltimage.png'"  :alt="agriculture.title"  width="233" height="148">
                                             <h3> {{ agriculture.title }}</h3>
                                         </a>
                                     </div>
@@ -569,7 +569,7 @@
                                         <a :href="'/read/post/'+feature.id+'/'+feature.title" >
 
                                             <img :src="$asseturl + feature.fiture" v-if="feature.fiture" :alt="feature.title" width="233" height="148">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="feature.title"  width="233" height="148">
+                                            <img v-else :src="$asseturl+'defaltimage.png'"  :alt="feature.title"  width="233" height="148">
                                             <h3> {{ feature.title }}</h3>
                                         </a>
                                     </div>
@@ -596,7 +596,7 @@
                                         <a :href="'/read/post/'+campus.id+'/'+campus.title" >
 
                                             <img :src="$asseturl + campus.fiture" v-if="campus.fiture" :alt="campus.title" width="233" height="148">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="campus.title"  width="233" height="148">
+                                            <img v-else :src="$asseturl+'defaltimage.png'"  :alt="campus.title"  width="233" height="148">
                                             <h3> {{ campus.title }}</h3>
                                         </a>
                                     </div>
@@ -617,7 +617,7 @@
                                         <a :href="'/read/post/'+traveling.id+'/'+traveling.title" >
 
                                             <img :src="$asseturl + traveling.fiture" v-if="traveling.fiture" :alt="traveling.title" width="233" height="148">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="traveling.title"  width="233" height="148">
+                                            <img v-else :src="$asseturl+'defaltimage.png'"  :alt="traveling.title"  width="233" height="148">
                                             <h3> {{ traveling.title }}</h3>
                                         </a>
                                     </div>
@@ -638,7 +638,7 @@
                                         <a :href="'/read/post/'+the_job.id+'/'+the_job.title" >
 
                                             <img :src="$asseturl + the_job.fiture" v-if="the_job.fiture" :alt="the_job.title" width="233" height="148">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="the_job.title"  width="233" height="148">
+                                            <img v-else :src="$asseturl+'defaltimage.png'"  :alt="the_job.title"  width="233" height="148">
                                             <h3> {{ the_job.title }}</h3>
                                         </a>
                                     </div>
@@ -659,7 +659,7 @@
                                         <a :href="'/read/post/'+other.id+'/'+other.title" >
 
                                             <img :src="$asseturl + other.fiture" v-if="other.fiture" :alt="other.title" width="233" height="148">
-                                            <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="other.title"  width="233" height="148">
+                                            <img v-else :src="$asseturl+'defaltimage.png'"  :alt="other.title"  width="233" height="148">
                                             <h3> {{ other.title }}</h3>
                                         </a>
                                     </div>

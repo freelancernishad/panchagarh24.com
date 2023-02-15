@@ -50,21 +50,29 @@ class BlogController extends Controller
         // return $catName;
         $categoriesCount = Category::where('name',$catName)->count();
         if($categoriesCount>0){
+            $categoriesget = Category::where('name',$catName)->first();
+            $postCount =  Post::where(['cat_id'=>$categoriesget->id])->select('blog_id')->count();
+            if($postCount>0){
+
+                $posts =  Post::where(['cat_id'=>$categoriesget->id])->select('blog_id')->get();
+                $latestPost = Blog::orderBy('id','desc');
+                foreach ($posts as  $posid) {
+                    $latestPost->orWhere(['id'=>$posid->blog_id]);
+                }
+                $allpost =  $latestPost->paginate($Paginate);
 
 
-        $categoriesget = Category::where('name',$catName)->first();
-        $postCount =  Post::where(['cat_id'=>$categoriesget->id])->select('blog_id')->count();
-        if($postCount>0){
-            $posts =  Post::where(['cat_id'=>$categoriesget->id])->select('blog_id')->get();
-            $latestPost = Blog::orderBy('id','desc');
-            foreach ($posts as  $posid) {
-                $latestPost->orWhere(['id'=>$posid->blog_id]);
+
+
+
+
+                return $allpost;
+
+
+            }else{
+                return [];
             }
-            return $latestPost->paginate($Paginate);
         }else{
-            return [];
-        }
-    }else{
             return [];
         }
 

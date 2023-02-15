@@ -24,7 +24,7 @@
                                                 <a :href="'/read/post/'+row.id+'/'+row.title"
                                                     class="news-item news-item-lead border-0">
                                                     <img style="height:335px !important;" :src="$asseturl+row.fiture" v-if="row.fiture"  :alt="row.title" class="lazyload img-loader">
-                                                        <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="row.title" class="lazyload img-loader">
+                                                        <img v-else :src="$asseturl+'defaltimage.png'"  :alt="row.title" class="lazyload img-loader">
                                                     <h2 class="title liveTitle" style="margin: 10px 0">
                                                         {{ row.title }}
                                                     </h2>
@@ -39,7 +39,7 @@
                                                     <a :href="'/read/post/'+row.id+'/'+row.title"
                                                         class="news-item news-item-box m-py-2 border-bottom">
                                                         <img style="height:175px !important;" :src="$asseturl+row.fiture" v-if="row.fiture"  :alt="row.title" class="lazyload img-loader">
-                                                        <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="row.title" class="lazyload img-loader">
+                                                        <img v-else :src="$asseturl+'defaltimage.png'"  :alt="row.title" class="lazyload img-loader">
 
                                                         <h2 class="title">
                                                             {{ row.title }}
@@ -62,7 +62,7 @@
                                         <a :href="'/read/post/'+row.id+'/'+row.title"
                                             class="news-item news-item-box m-py-2">
                                             <img style="height:175px !important;" :src="$asseturl+row.fiture" v-if="row.fiture"  :alt="row.title" class="lazyload img-loader">
-                                                        <img v-else src="//cdn.dhakapost.com/media/common/placeholder.jpg"  :alt="row.title" class="lazyload img-loader">
+                                                        <img v-else :src="$asseturl+'defaltimage.png'"  :alt="row.title" class="lazyload img-loader">
                                             <h2 class="title">
                                                 {{ row.title }}
                                             </h2>
