@@ -3721,7 +3721,17 @@ var render = function render() {
       attrs: {
         src: _vm.$asseturl + featured_post.fiture
       }
-    }) : _vm._e(), _vm._v(" "), _vm._v('\'defaltimage.png\':alt="featured_post.title" class="img-responsive cover_image"/>\n                            ')]);
+    }) : _c("img", {
+      staticClass: "img-responsive cover_image",
+      staticStyle: {
+        height: "100px",
+        width: "100px"
+      },
+      attrs: {
+        src: _vm.$asseturl + "defaltimage.png",
+        alt: featured_post.title
+      }
+    })]);
   }), 0)], 1), _vm._v(" "), _c("div", {
     staticClass: "col-lg-3 col-md-6 top-list-1 m-order-1",
     staticStyle: {

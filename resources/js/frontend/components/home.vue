@@ -67,7 +67,7 @@
                             <div class="dots" style="display: flex;width: 98%;;overflow: auto;">
                                 <div class="navDotsImage" @click="slidernavChange(getlatestpost.length,index)" v-for="(featured_post, index) in getlatestpost"  :key="'slide'+index">
                                     <img style="height:100px;width:100px" :src="$asseturl + featured_post.fiture" v-if="featured_post.fiture"/>
-                                    <img style="height:100px;width:100px" v-else :src=""$asseturl+'defaltimage.png':alt="featured_post.title" class="img-responsive cover_image"/>
+                                    <img style="height:100px;width:100px" v-else :src="$asseturl+'defaltimage.png'" :alt="featured_post.title" class="img-responsive cover_image"/>
                                 </div>
                             </div>
 
