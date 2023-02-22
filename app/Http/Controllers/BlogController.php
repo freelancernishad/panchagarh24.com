@@ -260,7 +260,7 @@ class BlogController extends Controller
 
 
             if($ImagesCount>1){
-                $data['fiture'] =  fileupload($request->Images,"blogs/",300,165);
+                $data['fiture'] =  fileupload($request->Images,"blogs/",1200,660);
             }
 
         // if($id){
